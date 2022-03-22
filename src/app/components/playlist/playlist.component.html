@@ -6,7 +6,7 @@
     (swiper)="onSwiper($event)"
     (slideChange)="onSlideChange()"
   >
-    <ng-template swiperSlide *ngFor="let content of playlist.featuredPlaylists.content">
+    <ng-template class="swiper-slide" swiperSlide *ngFor="let content of playlist.featuredPlaylists.content; index as i">
       <a target="_blank" href="{{content.url}}">
         <img class="content-image" src="{{content.artwork}}" />
         <div class="content-details">

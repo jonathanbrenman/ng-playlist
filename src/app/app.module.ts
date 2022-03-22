@@ -11,6 +11,8 @@ import { HomeComponent } from './views/home/home.component';
 import { PlaylistComponent } from './components/playlist/playlist.component';
 import { SwiperModule } from 'swiper/angular';
 import { HttpClientModule } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
+import { playlistReducer } from './reducers/playlist.reducer';
 
 
 @NgModule({
@@ -27,7 +29,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatToolbarModule,
     MatIconModule,
     SwiperModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot({ playlist: playlistReducer }),
   ],
   providers: [],
   bootstrap: [LayoutComponent]

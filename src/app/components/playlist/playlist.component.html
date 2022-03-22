@@ -1,0 +1,16 @@
+<div *ngIf="playlists.length > 0">
+  <h1>{{title}}</h1>
+
+  <swiper
+    [config]="config"
+    (swiper)="onSwiper($event)"
+    (slideChange)="onSlideChange()"
+  >
+    <ng-template swiperSlide *ngFor="let playlist of playlists">
+      <img
+        src="{{playlist.Img}}"
+      />
+    </ng-template>
+
+  </swiper>
+</div>

@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import SwiperCore, { SwiperOptions } from 'swiper';
 import { Playlist } from '../../models/Playlist';
+import { PlaylistService } from 'src/app/services/playlist/playlist.service';
 
 @Component({
   selector: 'playlist',
@@ -9,19 +10,27 @@ import { Playlist } from '../../models/Playlist';
 })
 
 export class PlaylistComponent implements OnInit {
+  public playlist: Playlist = <Playlist>{};
 
-  @Input() title: string = "";
-  @Input() playlists: Array<Playlist> = [];
-
-  constructor() { }
+  constructor(
+    private playlistService: PlaylistService
+  ) { }
 
   ngOnInit(): void {
+    this.playlistService.getPlaylists()
+      .subscribe((response: Playlist) => {
+        this.playlist = response;
+        console.log(response);
+      })
   }
 
   config: SwiperOptions = {
-    slidesPerView: 5,
+    direction: 'horizontal',
+    slidesPerView: 4,
     spaceBetween: 10,
-    navigation: true,
+    keyboard: true,
+    mousewheel: true,
+    navigation: false,
     pagination: { clickable: true },
     scrollbar: { draggable: true },
   };

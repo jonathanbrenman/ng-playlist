@@ -14,7 +14,7 @@ export class PlaylistService {
     private http: HttpClient
   ) { }
 
-  getPlaylists(): Observable<Playlist[]> {
-    return this.http.get<Playlist[]>(`${this.apiUrl}/programming-guides/v2/us_en-us/featured-playlists.json`)
+  getPlaylists(): Observable<Playlist> {
+    return this.http.get<Playlist>(`${this.apiUrl}/programming-guides/v2/us_en-us/featured-playlists.json`)
   }
 }

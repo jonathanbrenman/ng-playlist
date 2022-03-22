@@ -1,15 +1,18 @@
-<div *ngIf="playlists.length > 0">
-  <h1>{{title}}</h1>
+<div *ngIf="playlist.featuredPlaylists && playlist.featuredPlaylists.name">
+  <h1>{{playlist.featuredPlaylists.name}}</h1>
 
   <swiper
     [config]="config"
     (swiper)="onSwiper($event)"
     (slideChange)="onSlideChange()"
   >
-    <ng-template swiperSlide *ngFor="let playlist of playlists">
-      <img
-        src="{{playlist.Img}}"
-      />
+    <ng-template swiperSlide *ngFor="let content of playlist.featuredPlaylists.content">
+      <a target="_blank" href="{{content.url}}">
+        <img class="content-image" src="{{content.artwork}}" />
+        <div class="content-details">
+          <div class="limited-text">{{content.curator_name}} - {{content.name}}</div>
+        </div>
+      </a>
     </ng-template>
 
   </swiper>
